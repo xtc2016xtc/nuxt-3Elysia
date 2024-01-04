@@ -1,7 +1,11 @@
 <template>
-  <index></index>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
 </template>
 <script setup>
-import index from './pages/index.vue';
+
 
 </script>

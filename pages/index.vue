@@ -1,12 +1,5 @@
-<script lang="ts">
-</script>
-
 <template>
   <div>
-    <h1>Index</h1>
+    indexpages
   </div>
 </template>
-
-<style scoped>
-
-</style>
