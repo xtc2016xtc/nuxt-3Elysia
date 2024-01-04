@@ -1,15 +1,17 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
-
-export default defineComponent({
-name: "index"
-})
-</script>
-
 <template>
-  $END$
+  <div>
+    <h1>Hello World!</h1>
+  </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+  name: 'HelloWorld',
+}
+</script>
 
+<style scoped>
+h1 {
+  color: red;
+}
 </style>
