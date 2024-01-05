@@ -1,3 +1,6 @@
+
 <template>
-  <div>Profile components</div>
+  <div class="ProfileHeader">Profile Header
+    <ProfileHeaderAvatar />
+  </div>
 </template>
