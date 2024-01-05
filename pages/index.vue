@@ -1,5 +1,6 @@
 <template>
   <div>
-    indexpages
+    <Alert />
+    <Profile />
   </div>
 </template>

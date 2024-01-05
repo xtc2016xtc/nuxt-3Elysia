@@ -1,15 +1,8 @@
 <template>
-  <div>
+  <div class="bg-slate-900 h-screen text-white">
+    <!-- 0:28:33 -->
     <NuxtLayout>
-      <header>
-        <ul>
-          <li>
-            <!-- 0:22:15 -->
-            <Nuxt-link to="/">Home</Nuxt-link>
-            <Nuxt-link to="/events">Events</Nuxt-link>
-          </li>
-        </ul>
-      </header>
+      <Header />
       <NuxtPage />
     </NuxtLayout>
   </div>
