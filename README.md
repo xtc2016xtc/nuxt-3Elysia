@@ -1,10 +1,10 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 新手学习指南
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+查看 [Nuxt3 新手学习笔记](https://nuxt.com/docs/getting-started/introduction) 来了解更多
 
-## Setup
+## Setup[设置]
 
-Make sure to install the dependencies:
+Make sure to install the dependencies:[确保你安装的依赖项]
 
 ```bash
 # npm
@@ -22,7 +22,7 @@ bun install
 
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+补包完成后，启动项目，项目预览地址 `http://localhost:3000`:
 
 ```bash
 # npm
@@ -40,7 +40,7 @@ bun run dev
 
 ## Production
 
-Build the application for production:
+Build the application for production:[打包后部署到自己的服务器上]
 
 ```bash
 # npm
@@ -56,7 +56,7 @@ yarn build
 bun run build
 ```
 
-Locally preview production build:
+Locally preview production build: [生产环境下的预览]
 
 ```bash
 # npm
@@ -72,4 +72,4 @@ yarn preview
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+如果不会请看 [部署文档](https://nuxt.com/docs/getting-started/deployment) for more information.
