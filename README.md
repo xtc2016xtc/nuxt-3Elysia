@@ -73,3 +73,14 @@ bun run preview
 ```
 
 如果不会请看 [部署文档](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## directory
+  | assets/[存放样式表]
+  |     --main.scss[框架Tailwindcss配置]
+  | components/[放置所有vue组件]
+  |  -Profile[存放组件事件]
+  | pages[页面位置:{ps:Nuxt会自动默认每个页面的路由}]
+  
+      
+
+      
