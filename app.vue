@@ -1,6 +1,6 @@
 <template>
   <div class="bg-slate-900 h-screen text-white">
-    <!-- 0:37:03 -->
+    <!-- 0:40:04 -->
     <NuxtLayout>
 
       <NuxtPage />
