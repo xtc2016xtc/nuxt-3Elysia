@@ -6,6 +6,7 @@
   </div>
 </template>
 <script setup>
-const { sayHello } = useUtils();
+const sayHello = () => console.log("goodbye");
+
 sayHello();
 </script>
