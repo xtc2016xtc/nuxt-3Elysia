@@ -1,5 +1,7 @@
 <template>
   <div class="Main">
-    Main Pages
+    <h1>Main Pages</h1>
+    <!-- <img src="/10001.jpg" alt=""> -->
+    <LconsBell />
   </div>
 </template>
