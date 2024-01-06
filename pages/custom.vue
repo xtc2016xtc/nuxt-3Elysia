@@ -1,111 +1,55 @@
-<script setup>
-// // definePageMeta({
-// //   // Page meta
-// //   layout: 'custom',
-// // })
-// definePageMeta({
-//   // Page meta
-//   layout: 'custom',
-//   // Page meta
-//   head: {
-//     title: 'Custom page',
-//     meta: [
-//       {
-//         hid: 'description',
-//         name: 'description',
-//         content: 'Custom page description',
-//       },
-//     ],
-//   },
-// })
-</script>
 <template>
-<template>
-  <div class="lottery">
-    <div class="wheel" :style="{ transform: 'rotate(' + rotation + 'deg)' }">
-      <div v-for="(item, index) in items" :key="index" class="item" :style="{ transform: 'rotate(' + (360 / items.length) * index + 'deg)' }">
-        {{ item }}
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img class="h-8 w-8" src="/10001.jpg" alt="Logo">
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Services</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+            </div>
+          </div>
+        </div>
+        <div class="-mr-2 flex md:hidden">
+          <button @click="isOpen = !isOpen" type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+            <span class="sr-only">Open main menu</span>
+            <svg :class="{'hidden': isOpen, 'block': !isOpen }" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg :class="{'hidden': !isOpen, 'block': isOpen }" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-    <button @click="startLottery">Start</button>
-  </div>
+
+    <div :class="{'block': isOpen, 'hidden': !isOpen}" class="md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
+        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      items: ['Prize 1', 'Prize 2', 'Prize 3', 'Prize 4', 'Prize 5'],
-      rotation: 0,
-      spinning: false,
-    };
-  },
-  methods: {
-    startLottery() {
-      if (this.spinning) return;
-      this.spinning = true;
-      const randomIndex = Math.floor(Math.random() * this.items.length);
-      const degrees = (360 / this.items.length) * randomIndex + 360 * 5; // Rotate 5 full circles
-      this.rotateWheel(degrees);
-    },
-    rotateWheel(degrees) {
-      const duration = 5000; // 5 seconds
-      const startTime = performance.now();
-      const animate = (currentTime) => {
-        const elapsedTime = currentTime - startTime;
-        if (elapsedTime >= duration) {
-          this.rotation = degrees % 360;
-          this.spinning = false;
-          return;
-        }
-        const progress = elapsedTime / duration;
-        const easeProgress = this.easeOutCubic(progress);
-        this.rotation = (degrees * easeProgress) % 360;
-        requestAnimationFrame(animate);
-      };
-      requestAnimationFrame(animate);
-    },
-    easeOutCubic(t) {
-      return 1 - Math.pow(1 - t, 3);
-    },
-  },
-};
+      isOpen: false
+    }
+  }
+}
 </script>
 
 <style>
-.lottery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-}
-
-.wheel {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  text-align: center;
-  background-color: #f0f0f0;
-  border-radius: 50%;
-}
-
-button {
-  margin-top: 20px;
-}
+/* Add your custom styles here */
 </style>
-  <div class="Custom page">Custom pages</div>
-</template>
