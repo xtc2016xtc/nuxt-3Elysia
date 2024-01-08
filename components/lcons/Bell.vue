@@ -1,6 +1,6 @@
 <template>
   <div>
-    Hello word
+    Hello word gitub and vuejs or https://www.baidu.com
   </div>
 </template>
 
