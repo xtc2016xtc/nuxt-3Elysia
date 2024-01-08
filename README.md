@@ -75,14 +75,15 @@ bun run preview
 如果不会请看 [部署文档](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## directory
-  | assets/[存放样式表{私有}]
-  |    
-  | components/[放置所有vue组件]
-  | 
-  | pages/[页面位置:{ps:Nuxt会自动默认每个页面的路由}]
-  |
-  | layouts/[布局文件]
-  |
-  | public/[公共文件夹]
+  # assets/[存放样式表{私有}]
+      
+  # components/[放置所有vue组件]
+   
+  # pages/[页面位置:{ps:Nuxt会自动默认每个页面的路由}]
+  
+  # layouts/[布局文件]
+  
+  # public/[公共文件夹]
 
+  # plugins/[插件]
       
