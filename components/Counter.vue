@@ -1,17 +1,11 @@
 <script setup>
   const counter = useCounter();
-  /**
-1:17:53
-*/
 </script>
 
 <template>
   <div>
-    <div id="main">
       <h1>Counter: {{ counter }}</h1>
     <button @click="counter++">+</button>
     <button @click="counter--">-</button>
     </div>
-    <Counter id="counter"/>
-  </div>
 </template>

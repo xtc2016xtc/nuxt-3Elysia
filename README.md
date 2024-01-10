@@ -78,7 +78,9 @@ bun run preview
   # assets/[存放样式表{私有}]
       
   # components/[放置所有vue组件]
-   
+  
+  # composables/[可共享的]
+  
   # pages/[页面位置:{ps:Nuxt会自动默认每个页面的路由}]
   
   # layouts/[布局文件]
@@ -88,4 +90,7 @@ bun run preview
   # plugins/[插件]
 
   # middleware/[中间件]
-      
+
+  # Modules/[模块/@Nuxt/conentt]
+  
+  # state management/[状态管理]
