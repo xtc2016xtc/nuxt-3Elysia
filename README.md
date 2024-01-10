@@ -28,14 +28,6 @@ bun install
 # npm
 npm run dev
 
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -46,14 +38,6 @@ Build the application for production:[打包后部署到自己的服务器上]
 # npm
 npm run build
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build: [生产环境下的预览]
@@ -62,14 +46,6 @@ Locally preview production build: [生产环境下的预览]
 # npm
 npm run preview
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 如果不会请看 [部署文档](https://nuxt.com/docs/getting-started/deployment) for more information.
