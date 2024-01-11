@@ -66,3 +66,5 @@ npm run preview
   # stores/[pinia/管理]
 
   # Sever/[跨组件和组件管理]
+
+  # Nitro/[ETC]
