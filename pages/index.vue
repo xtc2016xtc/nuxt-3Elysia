@@ -1,17 +1,12 @@
 <script setup>
-  const counter = useCounter();
-  /**
-1:17:53
-*/
+definePageMeta({
+  layout: 'custom'
+})
+import { useConterStore } from '~/stores/myStore';
+  const store = useConterStore();
+  console.log(store);
 </script>
 
 <template>
-  <div>
-    <div id="main">
-      <h1>Counter: {{ counter }}</h1>
-    <button @click="counter++">+</button>
-    <button @click="counter--">-</button>
-    </div>
-    <Counter id="counter"/>
-  </div>
+  <div>hello</div>
 </template>

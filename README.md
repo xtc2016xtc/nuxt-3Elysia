@@ -10,14 +10,6 @@ Make sure to install the dependencies:[确保你安装的依赖项]
 # npm
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -70,3 +62,5 @@ npm run preview
   # Modules/[模块/@Nuxt/conentt]
   
   # state management/[状态管理]
+
+  # stores/[存储]
