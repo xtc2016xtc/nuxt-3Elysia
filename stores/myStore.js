@@ -1,15 +1,9 @@
-import { defineStore } from "pinia";
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  const name = ref('test')
+  function $reset() {
+    count.value = 0
+  }
 
-export const useCounterStore = defineStore('counter',() => {
-    const count = ref(0)
-    const name = ref('Eduardo')
-    const doubleCount = computed(() => count.value * 2)
-    const increment = () => count.value++
-    return {
-        count,
-        increment,
-        doubleCount,
-        name
-
-    }
+  return { count, $reset,name }
 })
