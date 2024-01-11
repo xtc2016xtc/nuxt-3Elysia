@@ -63,4 +63,6 @@ npm run preview
   
   # state management/[状态管理]
 
-  # stores/[存储]
+  # stores/[pinia/管理]
+
+  # Sever/[跨组件和组件管理]
