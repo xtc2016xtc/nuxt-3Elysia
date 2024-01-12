@@ -71,4 +71,7 @@ npm run preview
 
   # Rendering Modes/[渲染模式]
 
+  # useFetch/[组合获取]
+
+  # useAsyncData/[异步获取]
 

@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Product 1",
+    "image": "https://example.com/image1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Product 2",
+    "image": "https://example.com/image2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Product 3",
+    "image": "https://example.com/image3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Product 4",
+    "image": "https://example.com/image4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Product 5",
+    "image": "https://example.com/image5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Product 6",
+    "image": "https://example.com/image6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Product 7",
+    "image": "https://example.com/image7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Product 8",
+    "image": "https://example.com/image8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Product 9",
+    "image": "https://example.com/image9.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Product 10",
+    "image": "https://example.com/image10.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Product 11",
+    "image": "https://example.com/image11.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Product 12",
+    "image": "https://example.com/image12.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Product 13",
+    "image": "https://example.com/image13.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Product 14",
+    "image": "https://example.com/image14.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Product 15",
+    "image": "https://example.com/image15.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Product 16",
+    "image": "https://example.com/image16.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Product 17",
+    "image": "https://example.com/image17.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Product 18",
+    "image": "https://example.com/image18.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Product 19",
+    "image": "https://example.com/image19.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Product 20",
+    "image": "https://example.com/image20.jpg"
+  }
+]
