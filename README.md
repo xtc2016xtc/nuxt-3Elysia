@@ -67,4 +67,8 @@ npm run preview
 
   # Sever/[跨组件和组件管理]
 
-  # Nitro/[ETC]
+  # Nitro/[ETC/缓存]
+
+  # Rendering Modes/[渲染模式]
+
+
