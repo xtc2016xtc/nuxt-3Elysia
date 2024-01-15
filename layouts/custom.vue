@@ -1,4 +1,5 @@
 <template>
+  <!-- layout/custom.vue -->
   <div class="CustomlLayout text-white bg-blue-900 h-screen">
     <p>Customl layout</p>
     <slot />
