@@ -13,10 +13,6 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
-
 <style scoped>
 .bg-video-container {
   position: relative;
