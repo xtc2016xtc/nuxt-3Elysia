@@ -4,120 +4,90 @@
     "id": 1,
     "name": "Product 1",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 2,
     "name": "Product 2",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 3,
     "name": "Product 3",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 4,
     "name": "Product 4",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 5,
     "name": "Product 5",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 6,
     "name": "Product 6",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 7,
     "name": "Product 7",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 8,
     "name": "Product 8",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 9,
     "name": "Product 9",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 10,
     "name": "Product 10",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 11,
     "name": "Product 11",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 12,
     "name": "Product 12",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 13,
     "name": "Product 13",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 14,
     "name": "Product 14",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   },
   {
     "id": 15,
     "name": "Product 15",
     "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-  },
-  {
-    "id": 16,
-    "name": "Product 16",
-    "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-  },
-  {
-    "id": 17,
-    "name": "Product 17",
-    "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-  },
-  {
-    "id": 18,
-    "name": "Product 18",
-    "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-  },
-  {
-    "id": 19,
-    "name": "Product 19",
-    "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-  },
-  {
-    "id": 20,
-    "name": "Product 20",
-    "dous":"3000$",
-    "image": "https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
+    "image": "/10005.png"
   }
 ]

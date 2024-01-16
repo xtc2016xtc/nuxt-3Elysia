@@ -5,10 +5,7 @@
     </video>
     <div class="content">
       <!-- Your content here -->
-      <main class="container mx-auto px-4 py-8">
-          <h1 class="text-4xl font-bold text-gray-900 mb-4">Welcome to TailwindCSS</h1>
-          <p class="text-lg text-gray-700 mb-8">A utility-first CSS framework for rapidly building custom designs.</p>
-        </main>
+      <Counter />
     </div>
   </div>
 </template>
