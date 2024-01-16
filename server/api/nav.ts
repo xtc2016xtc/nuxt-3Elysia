@@ -1,6 +1,5 @@
-import nav from './nav.json'
+import nav from '../json/nav.json'
 
-console.log(nav);
 
 export default defineEventHandler(async()=>{
   return new Promise<any>((resolve)=>{

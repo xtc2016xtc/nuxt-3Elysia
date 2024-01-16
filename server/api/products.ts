@@ -1,4 +1,4 @@
-import data from './products.json';
+import data from '../json/products.json';
 /**
  * @description defineEventHandler is a function that returns a promise
  * @param {function} callback

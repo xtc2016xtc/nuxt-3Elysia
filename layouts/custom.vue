@@ -6,7 +6,8 @@
     </header>
 
     <main class="flex-grow">
-      <!-- Main content goes here -->
+      <!--  -->
+      <MiansMian class="image-video"/>
       <slot />
     </main>
 
@@ -16,3 +17,12 @@
     </footer>
   </div>
 </template>
+
+<style  scoped>
+.responsive-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+</style>
+ 

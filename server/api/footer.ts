@@ -1,5 +1,4 @@
-import footer  from './footer.json';
-console.log(footer);
+import footer  from '../json/footer.json';
 
   export default defineEventHandler(async() =>{
       return new Promise<any>((resolve) => {
