@@ -1,22 +1,22 @@
 [
   {
-    "title": "Home",
+    "title": "首页",
     "url": "/"
   },
   {
-    "title": "About",
-    "url": "/about"
+    "title": "启示录",
+    "url": "/Profile"
   },
   {
-    "title": "Services",
-    "url": "/services"
+    "title": "中简",
+    "url": "/count"
   },
   {
-    "title": "Products",
-    "url": "/products"
+    "title": "摸索",
+    "url": "/"
   },
   {
-    "title": "Contact",
-    "url": "/contact"
+    "title": "联系我们",
+    "url": "/"
   }
 ]
