@@ -2,44 +2,24 @@
   <div class="responsive-layout">
     <header>
       <!-- Header content goes here -->
-      <Navs />
+      <Navs v-if="!showLoading" />
     </header>
 
     <main class="flex-grow">
-      <template v-if="showLoading">
-        <Loading />
-      </template>
-      <template v-else>
-        <MiansMian class="image-video" />
-        <slot />
-      </template>
+      <Loading v-if="showLoading" @click="showLoading = false" />
+      <MiansMian class="image-video" v-if="!showLoading" />
+      <slot v-if="!showLoading" />
     </main>
 
     <footer>
       <!-- Footer content goes here -->
-      <Footer />
+      <Footer v-if="!showLoading" />
     </footer>
   </div>
 </template>
 
-<script>
-import { ref, onMounted } from 'vue';
-
-export default {
-  setup() {
-    const showLoading = ref(true);
-
-    onMounted(() => {
-      setTimeout(() => {
-        showLoading.value = false;
-      }, 3000);
-    });
-
-    return {
-      showLoading
-    };
-  }
-}
+<script setup>
+  const showLoading = ref(true);
 </script>
 
 <style scoped>

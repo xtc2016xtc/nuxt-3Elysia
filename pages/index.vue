@@ -12,7 +12,39 @@ definePageMeta({
  */
 import { ref } from 'vue';
 const { data: products,pending } = await useLazyFetch('/api/products')
-
+/**
+ *  用于设置页面的标题、布局等信息
+ * @type {import('vue').DefineComponent}
+ * @param {string} title
+ * @param {Array} meta
+ * @param {string} layout
+ * @param {string} layoutTransition
+ */
+useHead({
+  title: 'this is my homepage for Nuxt course',
+  meta: [
+    {
+      name: 'description',
+      content: 'page where you are goinmg to find everything about this course of Nuxt',
+    },
+    {
+      name: 'keywords',
+      content: 'Nuxt, course, vue, javascript, frontend',
+    },
+    {
+      name: 'author',
+      content: 'Jorge Baumann',
+    },
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+  ],
+})
 
 
 
