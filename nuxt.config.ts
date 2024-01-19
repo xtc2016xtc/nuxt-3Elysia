@@ -16,13 +16,12 @@ export default defineNuxtConfig({
     // '@': resolve(__dirname, '/'),
     assets:"/<rootDir>/assets",
   },
-  css: ["~/assets/main.scss"],
-  modules: ["@nuxt/content","@pinia/nuxt"],
+  css: ["~/assets/main.scss","element-plus/dist/index.css"],
+  modules: ["@nuxt/content","@pinia/nuxt","@element-plus/nuxt"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  ssr:false,
 })
