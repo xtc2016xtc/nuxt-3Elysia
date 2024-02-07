@@ -16,6 +16,7 @@
         @click="startLoading"
       >
         {{ isLoading ? '加载中...' : '进入首页' }}
+        
       </button>
     </div>
   </div>
