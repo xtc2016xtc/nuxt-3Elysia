@@ -1,94 +1,60 @@
-<script setup>
-/**
- * 用于设置页面的标题、布局等信息
- * @type {import('vue').DefineComponent}
- */
-definePageMeta({
-  layout: 'custom'
-})
-/**
- * 用于存储商品信息的数组
- * @type {Ref<Array>}
- */
-import { ref } from 'vue';
-const { data: products,pending } = await useLazyFetch('/api/products')
-/**
- *  用于设置页面的标题、布局等信息
- * @type {import('vue').DefineComponent}
- * @param {string} title
- * @param {Array} meta
- * @param {string} layout
- * @param {string} layoutTransition
- */
-useHead({
-  title: 'this is my homepage for Nuxt course',
-  meta: [
-    {
-      name: 'description',
-      content: 'page where you are goinmg to find everything about this course of Nuxt',
-    },
-    {
-      name: 'keywords',
-      content: 'Nuxt, course, vue, javascript, frontend',
-    },
-    {
-      name: 'author',
-      content: 'Jorge Baumann',
-    },
-    {
-      name: 'robots',
-      content: 'index, follow',
-    },
-    {
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1',
-    },
-  ],
-})
-
-
-
-/**
- * 用于存储描述信息的数组
- * @type {Ref<Array>}
- */
-const showDescription = ref([]);
-/**
- * 用于切换描述信息的显示状态
- * @param {number} index
- */
-const toggleDescription = (index) => {
-  showDescription[index] = !showDescription[index];
-};
-</script>
-
 <template>
-<!-- 用于展示商品信息的列表-->
-<div class="flex flex-wrap justify-center" >
-  <!-- 用于展示单个商品信息的卡片-->
-    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4" v-for="(item,index) in pending ? products : products" :key="index">
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <!-- 商品图片 -->
-        <img class="w-full h-48 object-cover" :src="item.image" alt="Product Image" />
-        <!-- 商品信息 -->
-        <div class="p-4">
-          <h3 class="text-lg font-medium text-gray-800">{{ item.name }}</h3>
-          <p class="text-gray-600">{{ item.dous }}</p>
-        </div>
-        <!-- 商品描述 -->
-        <div class="p-4 bg-gray-100">
-          <button
-            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            @click="toggleDescription(index)"
-          >
-            {{ showDescription[index] ? '未知' : '已知' }}
-          </button>
-          <!-- 用于展示商品描述的区域 -->
-          <div v-if="showDescription[index]" class="mt-2">
-            <p class="text-gray-600">{{ item.name }}</p>
+  <div class="bg-white">
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <h2 class="sr-only">Products</h2>
+
+      <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <a v-for="product in products" :key="product.id" :href="product.href" class="group">
+          <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img :src="product.imageSrc" :alt="product.imageAlt" class="h-full w-full object-cover object-center group-hover:opacity-75" />
           </div>
-        </div>
+          <h3 class="mt-4 text-sm text-gray-700">{{ product.name }}</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900">{{ product.price }}</p>
+        </a>
       </div>
     </div>
   </div>
 </template>
+
+<script setup>
+definePageMeta({
+  title: 'Home',
+  description: 'The home page of our site.',
+  layout:"custom"
+})
+const products = [
+  {
+    id: 1,
+    name: 'Earthen Bottle',
+    href: '#',
+    price: '$48',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+    imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
+  },
+  {
+    id: 2,
+    name: 'Nomad Tumbler',
+    href: '#',
+    price: '$35',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+    imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+  },
+  {
+    id: 3,
+    name: 'Focus Paper Refill',
+    href: '#',
+    price: '$89',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+    imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
+  },
+  {
+    id: 4,
+    name: 'Machined Mechanical Pencil',
+    href: '#',
+    price: '$35',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+    imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+  },
+  // More products...
+]
+</script>
