@@ -15,6 +15,8 @@
       </div>
     </div>
   </div>
+  <!-- <PinName /> -->
+  <!-- <PinName /> -->
 </template>
 
 <script setup>
@@ -23,6 +25,8 @@ definePageMeta({
   description: 'The home page of our site.',
   layout:"custom"
 })
+// import { PinName } from "#build/components"
+// import PinName from "../components/PinName.vue"
 const products = [
   {
     id: 1,

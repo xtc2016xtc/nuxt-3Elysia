@@ -3,5 +3,6 @@
 
   <MiansMian />
   <slot />
+  <PinName />
   <!-- <Footer /> -->
 </template>
