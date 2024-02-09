@@ -61,12 +61,13 @@
       </div>
     </DisclosurePanel>
   </Disclosure>
+  <!-- <Footer /> -->
 </template>
 
 <script setup>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-
+import Footer from './footer.vue'
 const navigation = [
   { name: '首页', href: '/', current: true },
   { name: '风格', href: '/Login', current: false },

@@ -15,7 +15,7 @@
 <template>
   <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
+      <h2 class="text-2xl font-bold tracking-tight text-gray-900">还买了</h2>
 
       <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         <div v-for="product in products" :key="product.id" class="group relative">
@@ -27,7 +27,10 @@
               <h3 class="text-sm text-gray-700">
                 <a :href="product.href">
                   <span aria-hidden="true" class="absolute inset-0" />
-                  {{ product.name }}
+                  <!-- {{ product.name }} -->
+                  <span>{{ product.name }}</span>
+                  <!-- <span aria-hidden="true" class="absolute inset-0" /> -->
+                  <!-- {{ product.name }} -->
                 </a>
               </h3>
               <p class="mt-1 text-sm text-gray-500">{{ product.color }}</p>

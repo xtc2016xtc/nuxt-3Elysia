@@ -13,194 +13,105 @@
   ```
 -->
 <template>
-  <div class="bg-white">
-    <!-- Mobile menu -->
-    <TransitionRoot as="template" :show="open">
-      <Dialog as="div" class="relative z-40 lg:hidden" @close="open = false">
-        <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="transition-opacity ease-linear duration-300" leave-from="opacity-100" leave-to="opacity-0">
-          <div class="fixed inset-0 bg-black bg-opacity-25" />
-        </TransitionChild>
+  <TransitionRoot as="template" :show="open">
+    <Dialog as="div" class="relative z-10" @close="open = false">
+      <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+        <div class="fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block" />
+      </TransitionChild>
 
-        <div class="fixed inset-0 z-40 flex">
-          <TransitionChild as="template" enter="transition ease-in-out duration-300 transform" enter-from="-translate-x-full" enter-to="translate-x-0" leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0" leave-to="-translate-x-full">
-            <DialogPanel class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-              <div class="flex px-4 pb-2 pt-5">
-                <button type="button" class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400" @click="open = false">
-                  <span class="absolute -inset-0.5" />
-                  <span class="sr-only">Close menu</span>
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div class="flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4">
+          <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" enter-to="opacity-100 translate-y-0 md:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 md:scale-100" leave-to="opacity-0 translate-y-4 md:translate-y-0 md:scale-95">
+            <DialogPanel class="flex w-full transform text-left text-base transition md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl">
+              <div class="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+                <button type="button" class="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8" @click="open = false">
+                  <span class="sr-only">Close</span>
                   <XMarkIcon class="h-6 w-6" aria-hidden="true" />
                 </button>
-              </div>
 
-              <!-- Links -->
-              <TabGroup as="div" class="mt-2">
-                <div class="border-b border-gray-200">
-                  <TabList class="-mb-px flex space-x-8 px-4">
-                    <Tab as="template" v-for="category in navigation.categories" :key="category.name" v-slot="{ selected }">
-                      <button :class="[selected ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-900', 'flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium']">{{ category.name }}</button>
-                    </Tab>
-                  </TabList>
-                </div>
-                <TabPanels as="template">
-                  <TabPanel v-for="category in navigation.categories" :key="category.name" class="space-y-10 px-4 pb-8 pt-10">
-                    <div class="grid grid-cols-2 gap-x-4">
-                      <div v-for="item in category.featured" :key="item.name" class="group relative text-sm">
-                        <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                          <img :src="item.imageSrc" :alt="item.imageAlt" class="object-cover object-center" />
+                <div class="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+                  <div class="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
+                    <img :src="product.imageSrc" :alt="product.imageAlt" class="object-cover object-center" />
+                  </div>
+                  <div class="sm:col-span-8 lg:col-span-7">
+                    <h2 class="text-2xl font-bold text-gray-900 sm:pr-12">{{ product.name }}</h2>
+
+                    <section aria-labelledby="information-heading" class="mt-2">
+                      <h3 id="information-heading" class="sr-only">Product information</h3>
+
+                      <p class="text-2xl text-gray-900">{{ product.price }}</p>
+
+                      <!-- Reviews -->
+                      <div class="mt-6">
+                        <h4 class="sr-only">Reviews</h4>
+                        <div class="flex items-center">
+                          <div class="flex items-center">
+                            <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating" :class="[product.rating > rating ? 'text-gray-900' : 'text-gray-200', 'h-5 w-5 flex-shrink-0']" aria-hidden="true" />
+                          </div>
+                          <p class="sr-only">{{ product.rating }} out of 5 stars</p>
+                          <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">{{ product.reviewCount }} reviews</a>
                         </div>
-                        <a :href="item.href" class="mt-6 block font-medium text-gray-900">
-                          <span class="absolute inset-0 z-10" aria-hidden="true" />
-                          {{ item.name }}
-                        </a>
-                        <p aria-hidden="true" class="mt-1">Shop now</p>
                       </div>
-                    </div>
-                    <div v-for="section in category.sections" :key="section.name">
-                      <p :id="`${category.id}-${section.id}-heading-mobile`" class="font-medium text-gray-900">{{ section.name }}</p>
-                      <ul role="list" :aria-labelledby="`${category.id}-${section.id}-heading-mobile`" class="mt-6 flex flex-col space-y-6">
-                        <li v-for="item in section.items" :key="item.name" class="flow-root">
-                          <a :href="item.href" class="-m-2 block p-2 text-gray-500">{{ item.name }}</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </TabPanel>
-                </TabPanels>
-              </TabGroup>
+                    </section>
 
-              <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                <div v-for="page in navigation.pages" :key="page.name" class="flow-root">
-                  <a :href="page.href" class="-m-2 block p-2 font-medium text-gray-900">{{ page.name }}</a>
-                </div>
-              </div>
+                    <section aria-labelledby="options-heading" class="mt-10">
+                      <h3 id="options-heading" class="sr-only">Product options</h3>
 
-              <div class="space-y-6 border-t border-gray-200 px-4 py-6">
-                <div class="flow-root">
-                  <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Sign in</a>
-                </div>
-                <div class="flow-root">
-                  <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Create account</a>
-                </div>
-              </div>
+                      <form>
+                        <!-- Colors -->
+                        <div>
+                          <h4 class="text-sm font-medium text-gray-900">Color</h4>
 
-              <div class="border-t border-gray-200 px-4 py-6">
-                <a href="#" class="-m-2 flex items-center p-2">
-                  <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="block h-auto w-5 flex-shrink-0" />
-                  <span class="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                  <span class="sr-only">, change currency</span>
-                </a>
+                          <RadioGroup v-model="selectedColor" class="mt-4">
+                            <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
+                            <span class="flex items-center space-x-3">
+                              <RadioGroupOption as="template" v-for="color in product.colors" :key="color.name" :value="color" v-slot="{ active, checked }">
+                                <div :class="[color.selectedClass, active && checked ? 'ring ring-offset-1' : '', !active && checked ? 'ring-2' : '', 'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none']">
+                                  <RadioGroupLabel as="span" class="sr-only">{{ color.name }}</RadioGroupLabel>
+                                  <span aria-hidden="true" :class="[color.class, 'h-8 w-8 rounded-full border border-black border-opacity-10']" />
+                                </div>
+                              </RadioGroupOption>
+                            </span>
+                          </RadioGroup>
+                        </div>
+
+                        <!-- Sizes -->
+                        <div class="mt-10">
+                          <div class="flex items-center justify-between">
+                            <h4 class="text-sm font-medium text-gray-900">Size</h4>
+                            <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
+                          </div>
+
+                          <RadioGroup v-model="selectedSize" class="mt-4">
+                            <RadioGroupLabel class="sr-only">Choose a size</RadioGroupLabel>
+                            <div class="grid grid-cols-4 gap-4">
+                              <RadioGroupOption as="template" v-for="size in product.sizes" :key="size.name" :value="size" :disabled="!size.inStock" v-slot="{ active, checked }">
+                                <div :class="[size.inStock ? 'cursor-pointer bg-white text-gray-900 shadow-sm' : 'cursor-not-allowed bg-gray-50 text-gray-200', active ? 'ring-2 ring-indigo-500' : '', 'group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1']">
+                                  <RadioGroupLabel as="span">{{ size.name }}</RadioGroupLabel>
+                                  <span v-if="size.inStock" :class="[active ? 'border' : 'border-2', checked ? 'border-indigo-500' : 'border-transparent', 'pointer-events-none absolute -inset-px rounded-md']" aria-hidden="true" />
+                                  <span v-else aria-hidden="true" class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                                    <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
+                                      <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke" />
+                                    </svg>
+                                  </span>
+                                </div>
+                              </RadioGroupOption>
+                            </div>
+                          </RadioGroup>
+                        </div>
+
+                        <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
+                      </form>
+                    </section>
+                  </div>
+                </div>
               </div>
             </DialogPanel>
           </TransitionChild>
         </div>
-      </Dialog>
-    </TransitionRoot>
-
-    <header class="relative bg-white">
-      <p class="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">Get free delivery on orders over $100</p>
-
-      <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="border-b border-gray-200">
-          <div class="flex h-16 items-center">
-            <button type="button" class="relative rounded-md bg-white p-2 text-gray-400 lg:hidden" @click="open = true">
-              <span class="absolute -inset-0.5" />
-              <span class="sr-only">Open menu</span>
-              <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-            </button>
-
-            <!-- Logo -->
-            <div class="ml-4 flex lg:ml-0">
-              <a href="#">
-                <span class="sr-only">Your Company</span>
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
-              </a>
-            </div>
-
-            <!-- Flyout menus -->
-            <PopoverGroup class="hidden lg:ml-8 lg:block lg:self-stretch">
-              <div class="flex h-full space-x-8">
-                <Popover v-for="category in navigation.categories" :key="category.name" class="flex" v-slot="{ open }">
-                  <div class="relative flex">
-                    <PopoverButton :class="[open ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:text-gray-800', 'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out']">{{ category.name }}</PopoverButton>
-                  </div>
-
-                  <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100" leave-to-class="opacity-0">
-                    <PopoverPanel class="absolute inset-x-0 top-full text-sm text-gray-500">
-                      <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
-                      <div class="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
-
-                      <div class="relative bg-white">
-                        <div class="mx-auto max-w-7xl px-8">
-                          <div class="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                            <div class="col-start-2 grid grid-cols-2 gap-x-8">
-                              <div v-for="item in category.featured" :key="item.name" class="group relative text-base sm:text-sm">
-                                <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                  <img :src="item.imageSrc" :alt="item.imageAlt" class="object-cover object-center" />
-                                </div>
-                                <a :href="item.href" class="mt-6 block font-medium text-gray-900">
-                                  <span class="absolute inset-0 z-10" aria-hidden="true" />
-                                  {{ item.name }}
-                                </a>
-                                <p aria-hidden="true" class="mt-1">Shop now</p>
-                              </div>
-                            </div>
-                            <div class="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                              <div v-for="section in category.sections" :key="section.name">
-                                <p :id="`${section.name}-heading`" class="font-medium text-gray-900">{{ section.name }}</p>
-                                <ul role="list" :aria-labelledby="`${section.name}-heading`" class="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                                  <li v-for="item in section.items" :key="item.name" class="flex">
-                                    <a :href="item.href" class="hover:text-gray-800">{{ item.name }}</a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </PopoverPanel>
-                  </transition>
-                </Popover>
-
-                <a v-for="page in navigation.pages" :key="page.name" :href="page.href" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{ page.name }}</a>
-              </div>
-            </PopoverGroup>
-
-            <div class="ml-auto flex items-center">
-              <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Sign in</a>
-                <span class="h-6 w-px bg-gray-200" aria-hidden="true" />
-                <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800">Create account</a>
-              </div>
-
-              <div class="hidden lg:ml-8 lg:flex">
-                <a href="#" class="flex items-center text-gray-700 hover:text-gray-800">
-                  <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" class="block h-auto w-5 flex-shrink-0" />
-                  <span class="ml-3 block text-sm font-medium">CAD</span>
-                  <span class="sr-only">, change currency</span>
-                </a>
-              </div>
-
-              <!-- Search -->
-              <div class="flex lg:ml-6">
-                <a href="#" class="p-2 text-gray-400 hover:text-gray-500">
-                  <span class="sr-only">Search</span>
-                  <MagnifyingGlassIcon class="h-6 w-6" aria-hidden="true" />
-                </a>
-              </div>
-
-              <!-- Cart -->
-              <div class="ml-4 flow-root lg:ml-6">
-                <a href="#" class="group -m-2 flex items-center p-2">
-                  <ShoppingBagIcon class="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
-                  <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
-                  <span class="sr-only">items in cart, view bag</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
-  </div>
+      </div>
+    </Dialog>
+  </TransitionRoot>
 </template>
 
 <script setup>
@@ -208,142 +119,41 @@ import { ref } from 'vue'
 import {
   Dialog,
   DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
+  RadioGroup,
+  RadioGroupLabel,
+  RadioGroupOption,
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { StarIcon } from '@heroicons/vue/20/solid'
 
-const navigation = {
-  categories: [
-    {
-      id: 'women',
-      name: 'women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'men',
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
-      ],
-    },
+const product = {
+  name: 'Basic Tee 6-Pack ',
+  price: '$192',
+  rating: 3.9,
+  reviewCount: 117,
+  href: '#',
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-quick-preview-02-detail.jpg',
+  imageAlt: 'Two each of gray, white, and black shirts arranged on table.',
+  colors: [
+    { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
+    { name: 'Gray', class: 'bg-gray-200', selectedClass: 'ring-gray-400' },
+    { name: 'Black', class: 'bg-gray-900', selectedClass: 'ring-gray-900' },
   ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
+  sizes: [
+    { name: 'XXS', inStock: true },
+    { name: 'XS', inStock: true },
+    { name: 'S', inStock: true },
+    { name: 'M', inStock: true },
+    { name: 'L', inStock: true },
+    { name: 'XL', inStock: true },
+    { name: 'XXL', inStock: true },
+    { name: 'XXXL', inStock: false },
   ],
 }
 
 const open = ref(false)
+const selectedColor = ref(product.colors[0])
+const selectedSize = ref(product.sizes[2])
 </script>
