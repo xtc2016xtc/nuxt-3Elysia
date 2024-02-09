@@ -3,11 +3,11 @@ import { resolve } from "path"
 export default defineNuxtConfig({
   app:{
     head:{
-      title:"Nuxt course on youtube",
+      title:"Nuxt App",
       meta:[
         {
           name:"description",
-          content:"This is a repository for a course about Nuxt3 FOR YOUTUBE"
+          content:"后台管理系统"
         }
       ],
     }

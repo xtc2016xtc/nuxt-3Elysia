@@ -1,7 +1,7 @@
 <template>
-  <Navs />
+  <!-- <Navs /> -->
 
   <MiansMian />
   <slot />
-  <Footer />
+  <!-- <Footer /> -->
 </template>
